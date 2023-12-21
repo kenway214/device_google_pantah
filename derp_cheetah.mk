@@ -4,9 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit some common Lineage stuff.
+# Inherit some common Derpfest stuff.
 TARGET_DISABLE_EPPE := true
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
+$(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/google/pantah/aosp_cheetah.mk)
@@ -14,10 +15,31 @@ $(call inherit-product, device/google/gs201/lineage_common.mk)
 
 include device/google/pantah/cheetah/device-lineage.mk
 
+# PixelParts
+include packages/apps/PixelParts/device.mk
+
+# Call the BCR setup
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 7 Pro
-PRODUCT_NAME := lineage_cheetah
+PRODUCT_NAME := derp_cheetah
+
+TARGET_GAPPS_ARCH := arm64
+WITH_GMS := true
+IS_PHONE := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+DERP_BUILDTYPE := UNOfficial
+EXTRA_UDFPS_ANIMATIONS := true
+TARGET_BOOT_ANIMATION_RES := 1440
+TARGET_IS_PIXEL := true
+TARGET_IS_PIXEL_7 := true
+TARGET_PIXEL_STAND_SUPPORTED = true
+TARGET_FACE_UNLOCK_SUPPORTED = true
+
+# Enable quick tap
+TARGET_SUPPORTS_QUICK_TAP := true
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 3120
