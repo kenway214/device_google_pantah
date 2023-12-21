@@ -16,4 +16,10 @@
 
 <resources>
     <integer name="config_fingerprintMaxTemplatesPerUser">4</integer>
+
+    <!-- Whether device supports in-display fingerprint -->
+    <bool name="config_supportsUdfps">true</bool>
+
+    <!-- Whether devices suports in-display fingerprint when screen is off -->
+    <bool name="config_supportsScreenOffUdfps">true</bool>
 </resources>
