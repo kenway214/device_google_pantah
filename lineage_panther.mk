@@ -8,6 +8,19 @@
 TARGET_DISABLE_EPPE := true
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Call the BCR setup
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
+# UDFPS animations
+EXTRA_UDFPS_ANIMATIONS := true
+TARGET_HAS_UDFPS := true
+TARGET_ENABLE_BLUR := true
+TARGET_SUPPORTS_QUICK_TAP := true
+# AlphaDroid
+ALPHA_BUILD_TYPE := OFFICIAL
+ALPHA_MAINTAINER := Phoenix241
+WITH_GAPPS := true
+
 # Inherit device configuration
 $(call inherit-product, device/google/pantah/aosp_panther.mk)
 $(call inherit-product, device/google/gs201/lineage_common.mk)
