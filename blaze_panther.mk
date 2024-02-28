@@ -4,9 +4,14 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit some common Lineage stuff.
+# Inherit some common Blaze stuff.
 TARGET_DISABLE_EPPE := true
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
+$(call inherit-product, vendor/blaze/config/common_full_phone.mk)
+
+# Blaze Specific
+BLAZE_MAINTAINER := Phoenix241
+WITH_GAPPS := true
 
 # Inherit device configuration
 $(call inherit-product, device/google/pantah/aosp_panther.mk)
@@ -16,12 +21,29 @@ include device/google/pantah/panther/device-lineage.mk
 
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := google
+PRODUCT_DEVICE := panther
 PRODUCT_MODEL := Pixel 7
-PRODUCT_NAME := lineage_panther
+PRODUCT_NAME := blaze_panther
+PRODUCT_MANUFACTURER := Google
+
+# Define bootanimation resolution.
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
+
+# PixelParts
+include packages/apps/PixelParts/device.mk
+
+# Call the BCR setup
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
+# Face Unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
+# Blurs
+TARGET_SUPPORTS_BLUR := true
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=panther \
