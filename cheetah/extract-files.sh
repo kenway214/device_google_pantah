@@ -58,6 +58,11 @@ function blob_fixup() {
         product/etc/felica/common.cfg)
             sed -i -e '$a00000018,1' -e '/^00000014/d' -e '/^00000015/d' "${2}"
             ;;
+    # Link dolby blobs with v33 libstagefright_foundation
+    vendor/lib/libstagefright_soft_ddpdec.so | vendor/lib/libstagefright_soft_ac4dec.so | vendor/lib/libstagefrightdolby.so | vendor/lib64/libstagefright_soft_ddpdec.so | vendor/lib64/libdlbdsservice.so | vendor/lib64/libstagefright_soft_ac4dec.so | vendor/lib64/libstagefrightdolby.so)
+        "${PATCHELF}" --replace-needed "libstagefright_foundation.so" "libstagefright_foundation-v33.so" "${2}"
+        ;;
+
     esac
 }
 

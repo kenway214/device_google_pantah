@@ -6,6 +6,9 @@
 
 BUILD_BROKEN_DUP_RULES := true
 
+# Audio
+AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
+
 # Kernel
 TARGET_KERNEL_DTBO_PREFIX := dts/
 TARGET_KERNEL_DTBO := google/dtbo.img

@@ -3,7 +3,7 @@ echo 'Starting to clone stuffs needed to build for cheetah'
 # Device common
 echo 'Cloning common device tree'
 
-git clone https://github.com/kenway214/device_google_gs201.git -b aosp-14 device/google/gs201
+git clone https://github.com/kenway214/device_google_gs201.git -b aosp-14-dolby device/google/gs201
 git clone https://github.com/kenway214/device_google_gs101.git -b aosp-14 device/google/gs101
 git clone https://github.com/kenway214/device_google_gs-common.git -b derp-14 device/google/gs-common
 
@@ -13,7 +13,7 @@ git clone --depth=1 --recursive https://github.com/kenway214/kernel_google_gs201
 
 # Vendor
 echo 'Cloning vendor tree'
-git clone https://github.com/kenway214/proprietary_vendor_google_cheetah.git -b aosp-14 vendor/google/cheetah
+git clone https://github.com/kenway214/proprietary_vendor_google_cheetah.git -b aosp-14-dolby vendor/google/cheetah
 
 # pixel_parts
 echo 'Cloning pixelparts'
