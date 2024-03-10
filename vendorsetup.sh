@@ -23,6 +23,13 @@ git clone https://github.com/Evolution-X-Devices/packages_apps_PixelParts.git -b
 echo 'Cloning bcr'
 git clone --depth=1 https://github.com/Evolution-X/vendor_bcr.git -b udc vendor/bcr
 
+# VoNR
+echo 'Enabling VoNR by default'
+cd frameworks/base
+wget https://raw.githubusercontent.com/xiaomi-haydn-devs/Patch-Haydn/14/VoNR/0001-Enable-VoNR-by-default.patch
+patch -p1 <0001-Enable-VoNR-by-default.patch
+cd ../..
+
 rm -rf hardware/google/pixel && git clone https://github.com/LineageOS/android_hardware_google_pixel -b lineage-21.0 hardware/google/pixel
 
 rm -rf hardware/google/graphics/common && git clone https://github.com/LineageOS/android_hardware_google_graphics_common -b lineage-21.0 hardware/google/graphics/common
